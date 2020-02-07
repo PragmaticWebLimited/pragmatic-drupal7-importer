@@ -1,0 +1,43 @@
+{
+	"title": "Content Entity Fields",
+	"name": "content-entity-fields",
+	"version": "0.1.0-dev",
+	"description": "Content Entity Fields helps developers add custom fields to content types, utilising the best of WordPress' block editor.",
+	"repository": {
+		"type": "git",
+		"url": "git@github.com:PragmaticWebLimited/content-entity-fields.git"
+	},
+	"author": "Pragmatic <hello@pragmatic.agency> (https://pragmatic.agency)",
+	"contributors": [
+		"Paul Gibbs <paul@byotos.com (https://byotos.com)"
+	],
+	"license": "GPL-3.0-only",
+	"engines": {
+		"node": "12.14.0",
+		"npm": "6.13.0"
+	},
+	"homepage": "https://github.com/PragmaticWebLimited/content-entity-fields#readme",
+	"scripts": {
+		"start": "webpack-dev-server -d --config=.webpack/dev.js",
+		"build": "cross-env NODE_ENV=production webpack -p --config=.webpack/prod.js"
+	},
+	"devDependencies": {
+		"@babel/preset-env": "^7.7.7",
+		"@babel/preset-react": "^7.7.4",
+		"@humanmade/webpack-helpers": "^0.6.1",
+		"@wordpress/browserslist-config": "^2.6.0",
+		"browserslist": "^4.8.3",
+		"concurrently": "^5.0.2",
+		"core-js": "^3.6.1",
+		"cross-env": "^6.0.3",
+		"eslint": "^6.8.0",
+		"eslint-config-prettier": "^6.9.0",
+		"eslint-plugin-jsx-a11y": "^6.2.3",
+		"eslint-plugin-prettier": "^3.1.2",
+		"node-sass": "^4.13.0",
+		"prettier": "^1.19.1",
+		"webpack": "^4.41.5",
+		"webpack-cli": "^3.3.10",
+		"webpack-dev-server": "^3.10.1"
+	}
+}

@@ -1,0 +1,69 @@
+{
+	"name": "pragmaticweb/content-entity-fields",
+	"description": "Content Entity Fields helps developers add custom fields to content types, utilising the best of WordPress' block editor.",
+	"type": "wordpress-plugin",
+	"license": "GPL-3.0-only",
+	"homepage": "https://pragmatic.agency/",
+	"authors": [
+		{
+			"name": "Pragmatic",
+			"email": "hello@pragmatic.agency"
+		},
+		{
+			"name": "Paul Gibbs",
+			"email": "paul@byotos.com"
+		}
+	],
+	"support": {
+		"source": "https://github.com/PragmaticWebLimited/content-entity-fields#readme"
+	},
+	"config": {
+		"autoloader-suffix": "cef",
+		"preferred-install": "dist",
+		"process-timeout": 600,
+		"sort-packages": true
+	},
+	"scripts": {
+		"cghooks": "vendor/bin/cghooks",
+		"post-install-cmd": [
+			"cghooks add --ignore-lock",
+			"npm install"
+		],
+		"post-update-cmd": "cghooks update",
+
+		"lint:css": [
+			"npx prettier --check \"src/**/*.scss\""
+		],
+		"lint:js": [
+			"npx eslint \"src/**/*.js\""
+		],
+		"lint:php": [
+			"phplint --exclude=vendor --exclude=node_modules --exclude=src .",
+			"phpcs -ps --colors --report-width=80 --standard=phpcompat.xml.dist .",
+			"phpcs -ps --colors --report-width=80 --standard=phpcs.xml.dist ."
+		],
+		"lint": [
+			"composer run lint:css",
+			"composer run lint:js",
+			"composer run lint:php"
+		]
+	},
+	"extra": {
+		"hooks": {
+			"pre-push": [
+				"composer run lint"
+			]
+		}
+	},
+	"require": {
+		"php": ">=7.3",
+		"composer/installers": "^1.7"
+	},
+	"require-dev": {
+		"brainmaestro/composer-git-hooks": "^2.8",
+		"humanmade/coding-standards": "^0.7.0",
+		"overtrue/phplint": "^1.2",
+		"phpunit/phpunit": "^8.5",
+		"wp-phpunit/wp-phpunit": "^5.3"
+	}
+}

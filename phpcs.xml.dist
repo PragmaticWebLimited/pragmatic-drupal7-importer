@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<ruleset name="Pragmatic PHP Standards">
+	<description>Apply Pragmatic PHP standards.</description>
+
+	<arg name="basepath" value="./" />
+	<arg name="extensions" value="php" />
+	<arg name="parallel" value="20" />
+	<arg value="ps" />
+
+	<ini name="memory_limit" value="256M" />
+
+	<!-- Use HM Coding Standards as our base. -->
+	<rule ref="HM">
+		<!-- This is too opinionated. -->
+		<exclude name="HM.Files.FunctionFileName" />
+		<exclude name="PSR2R.Namespaces.UseInAlphabeticalOrder" />
+
+		<!--
+		These are slightly too opinionated to be defaults, but are recommended.
+		-->
+		<!-- Declare symbols or run code, but not both. -->
+		<exclude name="PSR1.Files.SideEffects" />
+		<exclude name="HM.Files.NamespaceDirectoryName" />
+	</rule>
+
+	<!-- Ensure textdomain consistency. -->
+	<rule ref="WordPress.WP.I18n">
+		<properties>
+			<property name="text_domain" type="array" value="content-entity-fields" />
+		</properties>
+	</rule>
+
+	<!-- Third party libraries. -->
+	<exclude-pattern>/inc/asset-loader/*</exclude-pattern>
+	<exclude-pattern>/tests/bootstrap.php</exclude-pattern>
+
+	<!-- Tests folder. -->
+	<exclude-pattern>/\.tests/bootstrap\.php</exclude-pattern>
+
+	<!-- Package managers. -->
+	<exclude-pattern>/node_modules/*</exclude-pattern>
+	<exclude-pattern>/vendor/*</exclude-pattern>
+</ruleset>
