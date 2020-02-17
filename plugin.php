@@ -1,14 +1,14 @@
 <?php
 /**
- * Plugin Name: Content Entity Fields
- * Plugin URI: https://github.com/PragmaticWebLimited/content-entity-fields/
- * Description: Content Entity Fields helps developers add custom fields to content types, utilising the best of WordPress' block editor.
- * Author: Pragmatic Web Limited
+ * Plugin Name: Drupal 7 Importer
+ * Plugin URI: https://github.com/PragmaticWebLimited/pragmatic-drupal7-importer
+ * Description: Developer framework for importing data from Drupal 7 into WordPress.
+ * Author: Pragmatic
  * Author URI: https://pragmatic.agency
  * Version: 0.1.0-dev
  * License: GPL-3.0-only
  * License URI: http://www.gnu.org/licenses/gpl-3.0.html
- * Text Domain: content-entity-fields
+ * Text Domain: pragmatic-drupal7-importer
  * Requires at least: 5.3
  * Requires PHP: 7.3.0
  */

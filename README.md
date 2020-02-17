@@ -28,9 +28,9 @@ Ensure you have the prerequisite software installed:
 ## Installation
 
 1. Add this plugin to your project with Composer: `composer require pragmaticweb/pragmatic-drupal7-importer`.
-1. If you will be working on PHPUnit tests, create a new database called `wordpress_test`.
 1. Activate the plugin as usual, and use it via WP-CLI.
 
+The plugin assumes a database called `wordpress_test` exists and is accessible using the credentials in your WordPress' `wp-config.php` file. If you will be working on PHPUnit tests, you will need to manually make sure the database exists.
 
 ## Development Process
 ### Contributions
