@@ -1,13 +1,16 @@
 {
-	"name": "pragmaticweb/content-entity-fields",
-	"description": "Content Entity Fields helps developers add custom fields to content types, utilising the best of WordPress' block editor.",
+	"name": "pragmaticweb/pragmatic-drupal7-importer",
+	"description": "Developer framework for importing data from Drupal 7 into WordPress.",
 	"type": "wordpress-plugin",
 	"license": "GPL-3.0-only",
 	"homepage": "https://pragmatic.agency/",
 	"authors": [
 		{
 			"name": "Pragmatic",
-			"email": "hello@pragmatic.agency"
+			"email": "info@pragmatic.agency"
+		},
+		{
+			"name": "Luca Ricci"
 		},
 		{
 			"name": "Paul Gibbs",
@@ -15,37 +18,34 @@
 		}
 	],
 	"support": {
-		"source": "https://github.com/PragmaticWebLimited/content-entity-fields#readme"
+		"source": "https://github.com/PragmaticWebLimited/pragmatic-drupal7-importer#readme"
 	},
 	"config": {
-		"autoloader-suffix": "cef",
+		"autoloader-suffix": "pd7i",
 		"preferred-install": "dist",
 		"process-timeout": 600,
 		"sort-packages": true
 	},
 	"scripts": {
-		"cghooks": "vendor/bin/cghooks",
 		"post-install-cmd": [
-			"cghooks add --ignore-lock",
-			"npm install"
+			"cghooks add --ignore-lock"
 		],
 		"post-update-cmd": "cghooks update",
 
-		"lint:css": [
-			"npx prettier --check \"src/**/*.scss\""
-		],
-		"lint:js": [
-			"npx eslint \"src/**/*.js\""
-		],
 		"lint:php": [
-			"phplint --exclude=vendor --exclude=node_modules --exclude=src .",
+			"phplint --exclude=vendor .",
 			"phpcs -ps --colors --report-width=80 --standard=phpcompat.xml.dist .",
 			"phpcs -ps --colors --report-width=80 --standard=phpcs.xml.dist ."
 		],
 		"lint": [
-			"composer run lint:css",
-			"composer run lint:js",
 			"composer run lint:php"
+		],
+
+		"test:php": [
+			"phpunit"
+		],
+		"test": [
+			"composer run test:php"
 		]
 	},
 	"extra": {

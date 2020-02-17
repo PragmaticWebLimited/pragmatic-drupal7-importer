@@ -7,13 +7,14 @@
 	<arg name="parallel" value="20" />
 	<arg value="ps" />
 
-	<!-- Require PHP 7.3+. -->
-	<config name="testVersion" value="7.3-" />
+	<ini name="memory_limit" value="256M" />
 
 	<rule ref="PHPCompatibilityWP" />
 
-	<exclude-pattern>/node_modules/*</exclude-pattern>
+	<!-- Require PHP 7.3+. -->
+	<config name="testVersion" value="7.3-" />
+
+	<!-- Package managers. -->
 	<exclude-pattern>/vendor/*</exclude-pattern>
 
-	<ini name="memory_limit" value="256M" />
 </ruleset>

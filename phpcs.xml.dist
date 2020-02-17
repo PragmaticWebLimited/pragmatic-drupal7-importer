@@ -26,18 +26,13 @@
 	<!-- Ensure textdomain consistency. -->
 	<rule ref="WordPress.WP.I18n">
 		<properties>
-			<property name="text_domain" type="array" value="content-entity-fields" />
+			<property name="text_domain" type="array" value="pragmatic-drupal7-importer" />
 		</properties>
 	</rule>
-
-	<!-- Third party libraries. -->
-	<exclude-pattern>/inc/asset-loader/*</exclude-pattern>
-	<exclude-pattern>/tests/bootstrap.php</exclude-pattern>
 
 	<!-- Tests folder. -->
 	<exclude-pattern>/\.tests/bootstrap\.php</exclude-pattern>
 
 	<!-- Package managers. -->
-	<exclude-pattern>/node_modules/*</exclude-pattern>
 	<exclude-pattern>/vendor/*</exclude-pattern>
 </ruleset>

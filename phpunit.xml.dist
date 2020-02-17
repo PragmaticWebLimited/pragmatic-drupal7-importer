@@ -7,9 +7,12 @@
 	convertNoticesToExceptions="true"
 	convertWarningsToExceptions="true"
 	>
+	<php>
+		<env name="WP_PHPUNIT__TESTS_CONFIG" value=".tests/wp-tests-config.php" />
+	</php>
 	<testsuites>
-		<testsuite name="Content Entity Fields">
-			<directory prefix="class-test-" suffix=".php">./tests/</directory>
+		<testsuite name="Pragmatic Drupal 7 Importer">
+			<directory prefix="class-test-" suffix=".php">/tests/</directory>
 		</testsuite>
 	</testsuites>
 </phpunit>
