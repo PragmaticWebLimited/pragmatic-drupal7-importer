@@ -1,20 +1,53 @@
 <?php
+declare(strict_types=1);
+
 /**
- * Content Entity Fields loader.
+ * Bootstraps the Drupal 7 Importer plugin.
  */
+namespace Pragmatic\Drupal7_Importer;
 
-declare( strict_types = 1 );
+use HMCI;
+use Pragmatic\Autoloader as Autoloader;
 
-namespace Pragmatic\Content_Entity_Fields;
+// Exit if accessed directly.
+defined( 'ABSPATH' ) || exit;
 
 /**
- * Set up plugin.
+ * Initialise and set up the plugin.
  *
- * Register actions and filters.
+ * @return void
  */
-function init_plugin() : void {
+function set_up() : void {
 
-	// Blocks.
-	\add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\Blocks\enqueue_block_editor_assets' );
-	\add_action( 'init', __NAMESPACE__ . '\Blocks\helloworld' );
+	Autoloader\register_class_path( __NAMESPACE__, __DIR__ );
+
+	// We require humanmade/hm-content-import.
+	if ( ! class_exists( '\HMCI\Master', false ) ) {
+		return;
+	}
+
+	// This is a WP-CLI plugin.
+	if ( ! defined( '\WP_CLI' ) || ! constant( '\WP_CLI' ) ) {
+		return;
+	}
+
+	add_action( 'init', __NAMESPACE__ . '\load_importer' );
+
+	// Register the custom cli command for importing users. @todo create a HMCI importer for this.
+	\WP_CLI::add_command( 'drupal7-iu', __NAMESPACE__ . '\Users\Drupal7ImportUsers_Command' );
+
+	// Default behaviours.
+	add_filter( 'pragmatic.drupal7_importer.parse_item', __NAMESPACE__ . '\transforms\decode_html_entities', 6 );
+	add_filter( 'pragmatic.drupal7_importer.parse_item', __NAMESPACE__ . '\transforms\format_post_date', 6 );
+	add_filter( 'pragmatic.drupal7_importer.parse_item', __NAMESPACE__ . '\transforms\assign_post_author', 6 );
+	add_filter( 'pragmatic.drupal7_importer.parse_item', __NAMESPACE__ . '\transforms\transform_url_aliases', 6 );
+}
+
+/**
+ * Load the importer.
+ */
+function load_importer() : void {
+	HMCI\Master::add_importer( 'drupal7-posts-importer', __NAMESPACE__ . '\Posts_Importer' );
+	HMCI\Master::add_importer( 'drupal7-images-importer', __NAMESPACE__ . '\Images_Importer' );
+	HMCI\Master::add_validator( 'drupal7-posts-validator', __NAMESPACE__ . '\Posts_Validator' );
 }

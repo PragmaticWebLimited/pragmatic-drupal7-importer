@@ -23,6 +23,8 @@
 		<exclude name="HM.Files.NamespaceDirectoryName" />
 	</rule>
 
+	<config name="testVersion" value="7.3-" />
+
 	<!-- Ensure textdomain consistency. -->
 	<rule ref="WordPress.WP.I18n">
 		<properties>
@@ -31,8 +33,8 @@
 	</rule>
 
 	<!-- Tests folder. -->
-	<exclude-pattern>/\.tests/bootstrap\.php</exclude-pattern>
-	<exclude-pattern>/\.tests/wp-tests-config\.php</exclude-pattern>
+	<exclude-pattern>/tests/bootstrap\.php</exclude-pattern>
+	<exclude-pattern>/tests/wp-tests-config\.php</exclude-pattern>
 
 	<exclude-pattern>/vendor/*</exclude-pattern>
 	<exclude-pattern>/wp-content/*</exclude-pattern>
