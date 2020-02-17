@@ -32,6 +32,7 @@
 
 	<!-- Tests folder. -->
 	<exclude-pattern>/\.tests/bootstrap\.php</exclude-pattern>
+	<exclude-pattern>/\.tests/wp-tests-config\.php</exclude-pattern>
 
 	<exclude-pattern>/vendor/*</exclude-pattern>
 	<exclude-pattern>/wp-content/*</exclude-pattern>
