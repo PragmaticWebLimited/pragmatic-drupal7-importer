@@ -26,6 +26,12 @@
 		"process-timeout": 600,
 		"sort-packages": true
 	},
+	"repositories": [
+		{
+			"type": "git",
+			"url": "https://github.com/PragmaticWebLimited/hm-content-import"
+		}
+	],
 	"scripts": {
 		"post-install-cmd": [
 			"cghooks add --ignore-lock"
@@ -57,13 +63,14 @@
 	},
 	"require": {
 		"php": ">=7.3",
-		"composer/installers": "^1.7"
+		"composer/installers": "~1.7",
+		"humanmade/hm-content-import": "dev-master"
 	},
 	"require-dev": {
-		"brainmaestro/composer-git-hooks": "^2.8",
-		"humanmade/coding-standards": "^0.7.0",
-		"overtrue/phplint": "^1.2",
-		"phpunit/phpunit": "^8.5",
-		"wp-phpunit/wp-phpunit": "^5.3"
+		"brainmaestro/composer-git-hooks": "~2.8",
+		"humanmade/coding-standards": "~0.7",
+		"overtrue/phplint": "~1.2",
+		"phpunit/phpunit": "~8.5",
+		"wp-phpunit/wp-phpunit": "~5.3"
 	}
 }

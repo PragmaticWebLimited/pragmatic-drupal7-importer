@@ -1,23 +1,19 @@
-# Project files.
-/node_modules
+# Standard project files.
+/wp-content
 /vendor
-/cghooks.lock
-/dist/asset-manifest.json
-/.phplint-cache
 
 # Various Mac OS X.
 .DS_Store
 
 # Various Windows.
-Thumbs.db
-Thumbs.db:encryptable
 ehthumbs.db
 ehthumbs_vista.db
+Thumbs.db
+Thumbs.db:encryptable
 
 # Various Linux.
 *~
-.fuse_hidden*
 .directory
-.Trash-*
+.fuse_hidden*
 .nfs*
-
+.Trash-*
