@@ -33,6 +33,6 @@
 	<!-- Tests folder. -->
 	<exclude-pattern>/\.tests/bootstrap\.php</exclude-pattern>
 
-	<!-- Package managers. -->
 	<exclude-pattern>/vendor/*</exclude-pattern>
+	<exclude-pattern>/wp-content/*</exclude-pattern>
 </ruleset>

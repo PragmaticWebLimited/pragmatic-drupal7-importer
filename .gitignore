@@ -1,4 +1,5 @@
 # Standard project files.
+.phplint-cache
 /wp-content
 /vendor
 

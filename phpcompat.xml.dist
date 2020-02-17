@@ -14,7 +14,7 @@
 	<!-- Require PHP 7.3+. -->
 	<config name="testVersion" value="7.3-" />
 
-	<!-- Package managers. -->
 	<exclude-pattern>/vendor/*</exclude-pattern>
+	<exclude-pattern>/wp-content/*</exclude-pattern>
 
 </ruleset>
