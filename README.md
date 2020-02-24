@@ -32,6 +32,8 @@ Ensure you have the prerequisite software installed:
 
 The plugin assumes a database called `wordpress_test` exists and is accessible using the credentials in your WordPress' `wp-config.php` file. If you will be working on PHPUnit tests, you will need to manually make sure the database exists.
 
+Use the filter `pragmatic.drupal7_importer.drupal_user_roles_mapping` to map how Drupal user roles map to WordPress user roles.
+
 ## Development Process
 ### Contributions
 
