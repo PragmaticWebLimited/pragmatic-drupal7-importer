@@ -21,7 +21,7 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Registers the Drupal7 Import Users command.
  */
-class Drupal7ImportUsers_Command extends WP_CLI_Command {
+class Import_Users_Command extends WP_CLI_Command {
 	/**
 	 * Users found by the SQL query.
 	 *
