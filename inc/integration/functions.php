@@ -12,9 +12,6 @@ namespace Pragmatic\Drupal7_Importer\Integration;
 use const ARRAY_A;
 use wpdb;
 
-// Exit if accessed directly.
-defined( 'ABSPATH' ) || exit;
-
 /**
  * Get the total number of Drupal 7 entities to migrate.
  *

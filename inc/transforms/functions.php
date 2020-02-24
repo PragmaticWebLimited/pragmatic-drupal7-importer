@@ -9,9 +9,6 @@ namespace Pragmatic\Drupal7_Importer\Transforms;
 use const ENT_COMPAT;
 use const ENT_HTML5;
 
-// Exit if accessed directly.
-defined( 'ABSPATH' ) || exit;
-
 /**
  * Convert HTML entities to characters in certain fields.
  *

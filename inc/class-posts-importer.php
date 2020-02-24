@@ -15,9 +15,6 @@ use HMCI\Iterator;
 use HMCI\Utils;
 use Pragmatic\Drupal7_Importer\Integration;
 
-// Exit if accessed directly.
-defined( 'ABSPATH' ) || exit;
-
 /**
  * Drupal 7 content importer.
  */

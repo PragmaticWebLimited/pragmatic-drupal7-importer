@@ -16,9 +16,6 @@ use HMCI\Utils;
 use HMCI\Inserter\WP\Attachment;
 use Pragmatic\Drupal7_Importer\Integration;
 
-// Exit if accessed directly.
-defined( 'ABSPATH' ) || exit;
-
 /**
  * Drupal 7 images importer.
  */

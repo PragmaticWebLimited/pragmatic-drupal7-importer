@@ -10,9 +10,6 @@ use HMCI;
 use Pragmatic\Autoloader as Autoloader;
 use WP_CLI;
 
-// Exit if accessed directly.
-defined( 'ABSPATH' ) || exit;
-
 /**
  * Initialise and set up the plugin.
  *

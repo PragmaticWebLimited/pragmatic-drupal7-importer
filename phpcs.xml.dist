@@ -21,8 +21,6 @@
 		<!--
 		These are slightly too opinionated to be defaults, but are recommended.
 		-->
-		<!-- Declare symbols or run code, but not both. -->
-		<exclude name="PSR1.Files.SideEffects" />
 		<exclude name="HM.Files.NamespaceDirectoryName" />
 	</rule>
 

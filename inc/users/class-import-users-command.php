@@ -15,9 +15,6 @@ use const DB_PASSWORD;
 use const DB_HOST;
 use const ARRAY_A;
 
-// Exit if accessed directly.
-defined( 'ABSPATH' ) || exit;
-
 /**
  * Registers the Drupal7 Import Users command.
  */
