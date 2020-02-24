@@ -77,3 +77,4 @@ If a namespace also contains classes, group those classes together with the name
 	* `composer run test:phpunit` -- run PHPUnit tests.
 * `composer run lint` -- crun all of the following tasks:
 	* `composer run lint:phpcs` -- check PHP quality with a PHP linter and, PHPCS.
+
