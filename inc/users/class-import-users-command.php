@@ -109,17 +109,6 @@ class Import_Users_Command extends WP_CLI_Command {
 	 * @return string WordPress role name.
 	 */
 	private function map_wp_user_role( int $user_role_id ) : string {
-		$drupal_roles = [
-			1 => 'subscriber', // 'anonymous user'
-			2 => 'subscriber', // 'authenticated user'
-			3 => 'administrator', // 'administrator'
-			4 => 'editor', // 'content editor'
-			5 => 'subscriber', // 'sales and marketing'
-			6 => 'subscriber', // 'customer services'
-			7 => 'subscriber', // 'product owner'
-			8 => 'subscriber', // 'PR Editor'
-			9 => 'subscriber', // 'subscriber'
-		];
 
 		/**
 		 * Filters the drupal/wp mapping array.
@@ -129,7 +118,7 @@ class Import_Users_Command extends WP_CLI_Command {
 		 *                            Value is the WordPress role name.
 		 * @param int   $user_role_id Drupal user role id.
 		 */
-		$drupal_roles = apply_filters( 'pragmatic.drupal7_importer.drupal_user_roles_mapping_array', $drupal_roles, $user_role_id );
+		$drupal_roles = apply_filters( 'pragmatic.drupal7_importer.drupal_user_roles_mapping', [], $user_role_id );
 
 		return $drupal_roles[ $user_role_id ] ?? 'subscriber';
 	}
