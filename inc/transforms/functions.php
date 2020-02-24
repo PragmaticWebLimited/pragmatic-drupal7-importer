@@ -57,12 +57,13 @@ function assign_post_author( array $drupal_entity ) : array {
 		global $wpdb;
 
 		// Get the drupal user id and WordPress user id for all users.
-		$select_sql = $wpdb->prepare(
-			"SELECT meta_value AS drupal_uid, user_id AS wordpress_uid FROM {$wpdb->usermeta} WHERE meta_key = %s",
-			'_drupal_user_id'
+		$results = $wpdb->get_results(
+			$wpdb->prepare(
+				"SELECT meta_value AS drupal_uid, user_id AS wordpress_uid FROM {$wpdb->usermeta} WHERE meta_key = %s",
+				'_drupal_user_id'
+			),
+			ARRAY_A
 		);
-
-		$results = $wpdb->get_results( $select_sql, ARRAY_A );
 
 		// key => value array where key is the drupal user id and value is the WordPress user id.
 		foreach ( $results as $data ) {

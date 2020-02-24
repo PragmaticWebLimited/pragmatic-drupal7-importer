@@ -51,8 +51,7 @@ class Posts_Validator extends Iterator\DB\Base {
 	 */
 	public static function get_custom_args() {
 
-		return [
-		];
+		return [];
 	}
 
 	/**
@@ -63,7 +62,7 @@ class Posts_Validator extends Iterator\DB\Base {
 	public function get_count() {
 		$count = $this->db()->get_var(
 			$this->db()->prepare(
-				"SELECT COUNT(*) FROM wp_posts WHERE post_content LIKE %s",
+				'SELECT COUNT(*) FROM wp_posts WHERE post_content LIKE %s',
 				'%' . $this->db()->esc_like( '<img' ) . '%'
 			)
 		);
@@ -86,7 +85,7 @@ class Posts_Validator extends Iterator\DB\Base {
 		}
 
 		$query = $this->db()->prepare(
-			"SELECT * FROM wp_posts WHERE post_content LIKE %s ORDER BY ID LIMIT %d,%d",
+			'SELECT * FROM wp_posts WHERE post_content LIKE %s ORDER BY ID LIMIT %d,%d',
 			'%' . $this->db()->esc_like( '<img' ) . '%',
 			(int) $offset,
 			(int) $count
@@ -137,11 +136,12 @@ class Posts_Validator extends Iterator\DB\Base {
 					'/sites/igamingbusiness.com/files/',
 				];
 
-				$query = $wpdb->prepare(
-					"SELECT post_id FROM {$wpdb->postmeta} WHERE meta_key = '_drupal_file_path' AND meta_value = %s",
-					str_replace( $search, '', urldecode( $image_data['path'] ) )
+				$attachment_id = $wpdb->get_var(
+					$wpdb->prepare(
+						"SELECT post_id FROM {$wpdb->postmeta} WHERE meta_key = '_drupal_file_path' AND meta_value = %s",
+						str_replace( $search, '', urldecode( $image_data['path'] ) )
+					)
 				);
-				$attachment_id = $wpdb->get_var( $query );
 
 				if ( $attachment_id ) {
 					// Set image.
@@ -164,8 +164,8 @@ class Posts_Validator extends Iterator\DB\Base {
 		unset( $item['body_content_images'] );
 
 		/** @todo figure out why $progressbar is null. */
-		// // Manually tick the progress bar, as we're dealing with multiple entities per batch.
-		// CLI\HMCI::$progressbar->tick( 1 );
+		// Manually tick the progress bar, as we're dealing with multiple entities per batch.
+		CLI\HMCI::$progressbar->tick( 1 );
 		Utils\clear_local_object_cache();
 
 		if ( isset( $update_post ) && is_wp_error( $update_post ) ) {

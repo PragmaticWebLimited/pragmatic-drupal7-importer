@@ -134,8 +134,7 @@ class Posts_Importer extends Iterator\DB\Base {
 		// Temporary!
 		$item['post_type']   = 'post';  /** @todo Post types aren't set yet! */
 		$item['post_status'] = 'publish'; /** @todo Get the status from the query! */
-
-		$item['tax_input']  = [];
+		$item['tax_input']   = [];
 
 		$imported_post = wp_insert_post( $item, true );
 		if ( is_wp_error( $imported_post ) ) {

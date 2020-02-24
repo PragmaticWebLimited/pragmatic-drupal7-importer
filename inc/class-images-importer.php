@@ -58,8 +58,7 @@ class Images_Importer extends Iterator\DB\Base {
 	 */
 	public static function get_custom_args() {
 
-		return [
-		];
+		return [];
 	}
 
 	/**

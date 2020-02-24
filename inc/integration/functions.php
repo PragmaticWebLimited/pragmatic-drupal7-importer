@@ -355,10 +355,10 @@ function get_drupal_images_from_post_content( string $post_content ) : array {
 					continue;
 				}
 
-				$images[] = array(
+				$images[] = [
 					'src'  => $image_src,
 					'path' => $parsed_url['path'],
-				);
+				];
 			}
 		}
 	}
