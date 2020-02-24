@@ -26,8 +26,6 @@
 		<exclude name="HM.Files.NamespaceDirectoryName" />
 	</rule>
 
-	<config name="testVersion" value="7.3-" />
-
 	<!-- Ensure textdomain consistency. -->
 	<rule ref="WordPress.WP.I18n">
 		<properties>
