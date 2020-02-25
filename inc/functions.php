@@ -8,7 +8,6 @@ namespace Pragmatic\Drupal7_Importer;
 
 use HMCI;
 use Pragmatic\Autoloader as Autoloader;
-use WP_CLI;
 
 /**
  * Initialise and set up the plugin.
@@ -36,6 +35,7 @@ function set_up() : void {
 	add_filter( 'pragmatic.drupal7_importer.parse_item', __NAMESPACE__ . '\transforms\format_post_date', 6 );
 	add_filter( 'pragmatic.drupal7_importer.parse_item', __NAMESPACE__ . '\transforms\assign_post_author', 6 );
 	add_filter( 'pragmatic.drupal7_importer.parse_item', __NAMESPACE__ . '\transforms\transform_url_aliases', 6 );
+	add_filter( 'pragmatic.users_importer.parse_item', __NAMESPACE__ . '\transforms\map_drupal_roles_to_wp', 6 );
 }
 
 /**
@@ -43,9 +43,7 @@ function set_up() : void {
  */
 function load_importer() : void {
 	HMCI\Master::add_importer( 'drupal7-posts-importer', __NAMESPACE__ . '\Posts_Importer' );
+	HMCI\Master::add_importer( 'drupal7-users-importer', __NAMESPACE__ . '\Users_Importer' );
 	HMCI\Master::add_importer( 'drupal7-images-importer', __NAMESPACE__ . '\Images_Importer' );
 	HMCI\Master::add_validator( 'drupal7-posts-validator', __NAMESPACE__ . '\Posts_Validator' );
-
-	// Register the custom cli command for importing users. @todo create a HMCI importer for this.
-	WP_CLI::add_command( 'drupal7-users-importer', __NAMESPACE__ . '\Users\Import_Users_Command' );
 }
