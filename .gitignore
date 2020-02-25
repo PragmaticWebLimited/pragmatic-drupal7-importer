@@ -18,3 +18,4 @@ Thumbs.db:encryptable
 .fuse_hidden*
 .nfs*
 .Trash-*
+cghooks.lock

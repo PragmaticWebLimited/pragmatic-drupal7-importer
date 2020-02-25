@@ -26,6 +26,31 @@ function decode_html_entities( array $drupal_entity ) : array {
 }
 
 /**
+ * Maps the drupal user role id with a WordPress one. Falls back to subscriber if role id doesn't exist.
+ *
+ * @param array $user_entity User to migrate.
+ * @return array Updated user with WordPress role.
+ */
+function map_drupal_roles_to_wp( array $user_entity ) : array {
+	$user_role_id = $user_entity['drupal_role_id'];
+
+	/**
+	 * Filters the drupal/wp mapping array.
+	 *
+	 * @param array $drupal_roles Array of key => value drupal/wp roles.
+	 *                            Key is the drupal role id.
+	 *                            Value is the WordPress role name.
+	 * @param int   $user_role_id Drupal user role id.
+	 * @param array $user_entity  User to migrate.
+	 */
+	$drupal_roles = apply_filters( 'pragmatic.drupal7_importer.map_drupal_roles_to_wp.roles_mapping', [], $user_role_id, $user_entity );
+
+	$user_entity['role'] = $drupal_roles[ $user_role_id ] ?? 'subscriber';
+
+	return $user_entity;
+}
+
+/**
  * Convert the unix timestamp to a valid date format WordPress can digest.
  *
  * @param array $drupal_entity A Drupal entity (e.g. a Post).

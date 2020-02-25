@@ -362,3 +362,83 @@ function get_drupal_images_from_post_content( string $post_content ) : array {
 
 	return $images;
 }
+
+/**
+ * Get the total number of Drupal 7 users to migrate.
+ *
+ * @param wpdb $db Database connection to the Drupal 7 database.
+ *
+ * @return int
+ */
+function get_drupal_users_count( wpdb $db ) : int {
+
+	$select_sql = 'SELECT COUNT(*) FROM users AS u';
+
+	$select_sql = apply_filters(
+		'pragmatic.drupal7_importer.get_drupal_users_count.select_sql',
+		$select_sql,
+		$db
+	);
+
+	$where_conditions = [
+		'u.status = 1', // Boolean indicating "Whether the user is active(1) or blocked(0)."
+	];
+
+	// Allow modification of SQL WHERE conditions before querying.
+	$where_conditions = apply_filters(
+		'pragmatic.drupal7_importer.get_drupal_users_count.where_conditions',
+		$where_conditions,
+		$db
+	);
+
+	$where_sql = 'WHERE ' . join( ' AND ', $where_conditions );
+
+	return (int) $db->get_var( "{$select_sql} {$where_sql}" );
+}
+
+/**
+ * Get users from Drupal 7.
+ *
+ * @param wpdb   $db     Database connection to the Drupal 7 database.
+ * @param mixed  $offset How many pages of items do we need to offset?
+ * @param mixed  $count  How many items do we fetch per query?
+ *
+ * @return array
+ */
+function get_drupal_users( wpdb $db, int $count, int $offset ) : array {
+	$select_sql = <<<'SQL'
+		 SELECT
+		    u.uid     AS drupal_user_id,
+		    u.name    AS user_login,
+		    u.mail    AS user_email,
+		    FROM_UNIXTIME(u.created, '%%Y-%%m-%%d %%H:%%i:%%s') AS user_registered,
+		    u.status  AS drupal_user_status,
+		    ur.rid    AS drupal_role_id
+		 FROM users AS u
+		SQL;
+
+	// Get the user roles ids.
+	$join_sql = 'LEFT JOIN users_roles AS ur ON u.uid = ur.uid';
+
+	$where_conditions = [
+		'u.uid <> 0',
+	];
+
+	// Allow modification of SQL WHERE conditions before querying.
+	$where_conditions = apply_filters(
+		'pragmatic.drupal7_importer.get_drupal_users.where_conditions',
+		$where_conditions,
+		$db
+	);
+
+	$where_sql = 'WHERE ' . join( ' AND ', $where_conditions );
+
+	return $db->get_results(
+		$db->prepare(
+			"{$select_sql} {$join_sql} {$where_sql} LIMIT %d, %d",
+			$offset,
+			$count
+		),
+		ARRAY_A
+	);
+}
