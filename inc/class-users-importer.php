@@ -89,13 +89,6 @@ class Users_Importer extends Iterator\DB\Base {
 
 		$item['user_pass'] = wp_generate_password( 12, false );
 
-		/**
-		 * NOTE: Generate a random email address to avoid spamming real users during our tests.
-		 *
-		 * @todo remove for "actual" import.
-		 */
-		$user_data['user_email'] = sanitize_title( $item['user_login'] ) . '@example.local';
-
 		return apply_filters(
 			'pragmatic.users_importer.parse_item',
 			$item
