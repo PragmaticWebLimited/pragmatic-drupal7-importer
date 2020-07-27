@@ -73,5 +73,10 @@
 		"overtrue/phplint": "~1.2",
 		"phpunit/phpunit": "~8.5",
 		"wp-phpunit/wp-phpunit": "~5.3"
+	},
+	"autoload": {
+		"psr-4": {
+			"Pragmatic\\Drupal7_Importer\\" : "inc"
+		}
 	}
 }
