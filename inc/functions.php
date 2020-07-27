@@ -4,10 +4,9 @@ declare(strict_types=1);
 /**
  * Bootstraps the Drupal 7 Importer plugin.
  */
-namespace Pragmatic\Drupal7_Importer;
+namespace Pragmatic\Drupal7Importer;
 
 use HMCI;
-use Pragmatic\Autoloader as Autoloader;
 
 /**
  * Initialise and set up the plugin.
@@ -15,8 +14,6 @@ use Pragmatic\Autoloader as Autoloader;
  * @return void
  */
 function set_up() : void {
-
-	Autoloader\register_class_path( __NAMESPACE__, __DIR__ );
 
 	// We require humanmade/hm-content-import.
 	if ( ! class_exists( '\HMCI\Master', false ) ) {
@@ -42,8 +39,8 @@ function set_up() : void {
  * Load the importer.
  */
 function load_importer() : void {
-	HMCI\Master::add_importer( 'drupal7-posts-importer', __NAMESPACE__ . '\Posts_Importer' );
-	HMCI\Master::add_importer( 'drupal7-users-importer', __NAMESPACE__ . '\Users_Importer' );
-	HMCI\Master::add_importer( 'drupal7-images-importer', __NAMESPACE__ . '\Images_Importer' );
-	HMCI\Master::add_validator( 'drupal7-posts-validator', __NAMESPACE__ . '\Posts_Validator' );
+	HMCI\Master::add_importer( 'drupal7-posts-importer', __NAMESPACE__ . '\PostsImporter' );
+	HMCI\Master::add_importer( 'drupal7-users-importer', __NAMESPACE__ . '\UsersImporter' );
+	HMCI\Master::add_importer( 'drupal7-images-importer', __NAMESPACE__ . '\ImagesImporter' );
+	HMCI\Master::add_validator( 'drupal7-posts-validator', __NAMESPACE__ . '\PostsValidator' );
 }

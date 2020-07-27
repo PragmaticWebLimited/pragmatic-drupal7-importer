@@ -22,6 +22,11 @@
 		These are slightly too opinionated to be defaults, but are recommended.
 		-->
 		<exclude name="HM.Files.NamespaceDirectoryName" />
+
+		<!-- We use composer's autoload system so we can't met this requirements  -->
+		<exclude name="WordPress.Files.FileName.NotHyphenatedLowercase" />
+		<exclude name="WordPress.Files.FileName.InvalidClassFileName" />
+		<exclude name="HM.Files.ClassFileName.MismatchedName" />
 	</rule>
 
 	<!-- Ensure textdomain consistency. -->
@@ -36,5 +41,5 @@
 	<exclude-pattern>/tests/wp-tests-config\.php</exclude-pattern>
 
 	<exclude-pattern>/vendor/*</exclude-pattern>
-	<exclude-pattern>/wp-content/*</exclude-pattern>
+	<exclude-pattern>/wp-content/plugins/hm-content-import</exclude-pattern>
 </ruleset>

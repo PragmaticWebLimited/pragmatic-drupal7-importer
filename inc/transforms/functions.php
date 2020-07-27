@@ -4,7 +4,7 @@ declare(strict_types=1);
 /**
  * Utilities to help convert Drupal content into something for WordPress.
  */
-namespace Pragmatic\Drupal7_Importer\Transforms;
+namespace Pragmatic\Drupal7Importer\Transforms;
 
 use const ENT_COMPAT;
 use const ENT_HTML5;

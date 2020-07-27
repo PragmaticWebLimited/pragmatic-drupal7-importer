@@ -7,7 +7,7 @@ declare(strict_types=1);
  * We use "entities" and "nodes" here to refer to the Drupal 7 data objects of the same name.
  * For more info, read https://www.drupal.org/docs/7/api/entity-api/an-introduction-to-entitiess
  */
-namespace Pragmatic\Drupal7_Importer\Integration;
+namespace Pragmatic\Drupal7Importer\Integration;
 
 use const ARRAY_A;
 use wpdb;
