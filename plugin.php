@@ -17,8 +17,22 @@ declare( strict_types = 1 );
 
 namespace Pragmatic\Drupal7_Importer;
 
+use RuntimeException;
+
 // Exit if accessed directly.
 defined( 'ABSPATH' ) || exit;
+
+// Load composer autoloader if not already loaded.
+if ( ! class_exists( 'Users_Importer' ) ) {
+
+	$plugin_composer_autoloader = __DIR__ . DIRECTORY_SEPARATOR . 'vendor/autoload.php';
+
+	if ( ! \is_readable( $plugin_composer_autoloader ) ) {
+		throw new RuntimeException( 'Error loading composer autoload.php. Plugin: Drupal 7 Importer' );
+	}
+
+	require_once $plugin_composer_autoloader;
+}
 
 require_once __DIR__ . '/inc/integration/functions.php';
 require_once __DIR__ . '/inc/transforms/functions.php';

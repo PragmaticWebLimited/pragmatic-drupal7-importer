@@ -7,7 +7,6 @@ declare(strict_types=1);
 namespace Pragmatic\Drupal7_Importer;
 
 use HMCI;
-use Pragmatic\Autoloader as Autoloader;
 
 /**
  * Initialise and set up the plugin.
@@ -15,8 +14,6 @@ use Pragmatic\Autoloader as Autoloader;
  * @return void
  */
 function set_up() : void {
-
-	Autoloader\register_class_path( __NAMESPACE__, __DIR__ );
 
 	// We require humanmade/hm-content-import.
 	if ( ! class_exists( '\HMCI\Master', false ) ) {
