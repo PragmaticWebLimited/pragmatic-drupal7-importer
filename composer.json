@@ -41,7 +41,6 @@
 
 		"lint:php": [
 			"phplint --exclude=vendor .",
-			"phpcs -ps --colors --report-width=80 --standard=phpcompat.xml.dist .",
 			"phpcs -ps --colors --report-width=80 --standard=phpcs.xml.dist ."
 		],
 		"lint": [
@@ -69,7 +68,7 @@
 	},
 	"require-dev": {
 		"brainmaestro/composer-git-hooks": "~2.8",
-		"humanmade/coding-standards": "~0.7",
+		"pragmaticweb/php-coding-standards": "^0.0.1",
 		"overtrue/phplint": "~1.2",
 		"phpunit/phpunit": "~8.5",
 		"wp-phpunit/wp-phpunit": "~5.3"

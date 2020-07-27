@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<ruleset name="Pragmatic PHP Standards">
-	<description>Apply Pragmatic PHP standards.</description>
+<ruleset name="Pragmatic Drupal 7 Importer PHP Standards">
+	<description>PHP standards for the Pragmatic Drupal 7 Importer plugin.</description>
 
 	<arg name="basepath" value="./" />
 	<arg name="extensions" value="php" />
@@ -9,20 +9,8 @@
 
 	<ini name="memory_limit" value="256M" />
 
-	<!-- Use HM Coding Standards as our base. -->
-	<rule ref="HM">
-		<!-- This is too opinionated. -->
-		<exclude name="HM.Files.FunctionFileName" />
-		<exclude name="PSR2R.Namespaces.UseInAlphabeticalOrder" />
-
-		<!-- We run this seperately in phpcompat.xml.dist. -->
-		<exclude name="PHPCompatibilityWP" />
-
-		<!--
-		These are slightly too opinionated to be defaults, but are recommended.
-		-->
-		<exclude name="HM.Files.NamespaceDirectoryName" />
-	</rule>
+	<!-- Use Pragmatic Coding Standards as our base. -->
+	<rule ref="Pragmatic" />
 
 	<!-- Ensure textdomain consistency. -->
 	<rule ref="WordPress.WP.I18n">
