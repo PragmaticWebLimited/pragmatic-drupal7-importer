@@ -15,7 +15,7 @@
 
 declare( strict_types = 1 );
 
-namespace Pragmatic\Drupal7_Importer;
+namespace Pragmatic\Drupal7Importer;
 
 // Exit if accessed directly.
 defined( 'ABSPATH' ) || exit;

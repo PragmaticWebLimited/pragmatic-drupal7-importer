@@ -8,18 +8,18 @@ declare(strict_types=1);
  * files were not written as such, and I don't want us to accidentally
  * break things.
  */
-namespace Pragmatic\Drupal7_Importer;
+namespace Pragmatic\Drupal7Importer;
 
 use HMCI\CLI;
 use HMCI\Iterator;
 use HMCI\Utils;
 use HMCI\Inserter\WP\Attachment;
-use Pragmatic\Drupal7_Importer\Integration;
+use Pragmatic\Drupal7Importer\Integration;
 
 /**
  * Drupal 7 images importer.
  */
-class Images_Importer extends Iterator\DB\Base {
+class ImagesImporter extends Iterator\DB\Base {
 
 	/**
 	 * Constructor.
