@@ -30,6 +30,34 @@ class PostsImporter extends Iterator\DB\Base {
 
 		parent::__construct( $args, $type );
 		$this->args['debugger'] = 'error_log';
+
+		// Suspend bunches of stuff in WP core.
+		\wp_defer_term_counting( true );
+		\wp_defer_comment_counting( true );
+		\wp_suspend_cache_invalidation( true );
+	}
+
+	/**
+	 * Generic callback called when an import has been completed.
+	 *
+	 * The method name is misleading - it doesn't refer to an iteration of a group of posts within
+	 * a larger set. For the Beano importers, this is called once the import run has been completed.
+	 */
+	public function iteration_complete() {
+
+		parent::iteration_complete();
+
+		// Re-enable stuff in core.
+		\wp_suspend_cache_invalidation( false );
+		\wp_cache_flush();
+
+		foreach ( \get_taxonomies() as $tax ) {
+			\delete_option( "{$tax}_children" );
+			\_get_term_hierarchy( $tax );
+		}
+
+		\wp_defer_term_counting( false );
+		\wp_defer_comment_counting( false );
 	}
 
 	/**
